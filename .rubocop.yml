@@ -1,13 +1,27 @@
 AllCops:
   TargetRubyVersion: 3
 
+Layout/LineLength:
+  Max: 120
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+Style/EachWithObject:
+  Enabled: false
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
-
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
-
-Layout/LineLength:
-  Max: 120
