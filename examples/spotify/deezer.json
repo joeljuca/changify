@@ -1,0 +1,7 @@
+{
+  "users": [{ "id": "1", "name": "Albin Jaye" }],
+  "playlists": [{ "id": "1", "owner_id": "2", "song_ids": ["8", "32"] }],
+  "songs": [
+    { "id": "1", "artist": "Camila Cabello", "title": "Never Be the Same" }
+  ]
+}

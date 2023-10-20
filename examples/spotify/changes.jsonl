@@ -1,0 +1,4 @@
+["playlist.create", {"user_id": "1", "song_ids": ["1", "2"]}]
+["playlist.create", {"user_id": "1", "song_ids": ["1", "2"]}]
+["playlist.append", {"id": "1", "song_ids": ["1", "2"]}]
+["playlist.destroy", {"id": "1"}]
