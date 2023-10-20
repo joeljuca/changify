@@ -1,39 +1,65 @@
 # Changify
 
-TODO: Delete this and the text below, and describe your gem
+[![Licensed under MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE.txt)
+[![quality](https://github.com/joeljuca/changify/actions/workflows/main.yml/badge.svg)](https://github.com/joeljuca/changify/actions/workflows/main.yml)
+[![Follow Joel Jucá on X (formerly Twitter)](https://img.shields.io/twitter/follow/holyshtjoe)](https://twitter.com/holyshtjoe)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/changify`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Setup
 
-## Installation
+Install dependencies with [Bundler](https://bundler.io):
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+```
+$ bundle install
+```
 
-Install the gem and add to the application's Gemfile by executing:
+## About
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+My solution for the [BuildBook coding challenge](https://gist.github.com/vitchell/a081703591116bab7e859cc000c98495).
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+I wrote a Ruby module with the core functionality of this test.
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+The CLI itself is actually implemented in the `examples/spotify` dir.
 
-## Usage
+## `spotify.rb`
 
-TODO: Write usage instructions here
+This is the actual CLI, located in the `examples/spotify` dir. To see it in action, do the following
 
-## Development
+```sh
+$ cd examples/spotify
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+See the example in action with sample data:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```sh
+$ ruby ./spotify.rb ./deezer.json ./changes.jsonl
+```
 
-## Contributing
+By default, it prints the resulting JSON to STDOUT. It allow pipelining the results with tools like [jq](https://jqlang.github.io/jq/):
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/changify. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/changify/blob/main/CODE_OF_CONDUCT.md).
+```sh
+$ ruby ./spotify.rb ./deezer.json ./changes.jsonl | jq .
+```
 
-## License
+You can also write the resulting JSON to a destination file:
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+```sh
+$ ruby ./spotify.rb ./deezer.json ./changes.jsonl output.json
+```
+
+To eliminate the `ruby` part of this command, adjust its file permissions:
+
+```sh
+# set Unix permissions
+$ chmod u+x spotify.rb
+
+# now you can execute it without the `ruby` prefix
+$ ./spotify.rb ./deezer.json ./changes.jsonl output.json
+```
 
 ## Code of Conduct
 
-Everyone interacting in the Changify project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/changify/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Changify project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+
+## License
+
+[MIT](LICENSE.txt)
